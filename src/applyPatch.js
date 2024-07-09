@@ -7,7 +7,8 @@ import { fetchPackageInfo, getPackagePath } from "./package.js";
 import { program } from "commander";
 
 export default async function applyPatch() {
-  const PatchDir = path.join(process.cwd(), "/WallyPatches");
+  var option = program.opts();
+  const PatchDir = option.patchDir ?? path.join(process.cwd(), "/WallyPatches");
 
   if (!fs.existsSync(PatchDir)) {
     error("❌ No patches found");
@@ -23,9 +24,7 @@ export default async function applyPatch() {
 
   var applyCount = 0;
 
-  var Option = program.opts();
-
-  if (Option.patch) {
+  if (option.patch) {
     var found = false;
     for (const patchFile of patchFiles) {
       if (patchFile.match(Option.patch)) {

@@ -6,3 +6,4 @@ DevPackages
 build/**
 bin/**
 ignore
+.DS_Store

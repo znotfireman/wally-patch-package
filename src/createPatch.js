@@ -9,6 +9,7 @@ import fs from "fs";
 import path from "path";
 import simpleGit from "simple-git";
 import chalk from "chalk";
+import { program } from "commander";
 
 async function createDiff(source, target, patchDir, pkgInfo) {
   // source is downloaded from wally and target is the local edited package
@@ -60,6 +61,7 @@ async function createDiff(source, target, patchDir, pkgInfo) {
 }
 
 export default async function createPatch(packageName) {
+  var options = program.opts()
   console.log(chalk.yellow(`🩹 Creating patch for ${packageName}`));
 
   var pkgInfo = fetchPackageInfo(packageName);
@@ -79,7 +81,7 @@ export default async function createPatch(packageName) {
 
   const tmpPackageDir = `${tempDir}/${pkgInfo.Name}`;
 
-  const PatchDir = `${process.cwd()}/WallyPatches`;
+  const PatchDir = Option.patchDir ?? path.join(process.cwd(), "/WallyPatches");
 
   if (!fs.existsSync(PatchDir)) {
     fs.mkdirSync(PatchDir);

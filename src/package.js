@@ -118,8 +118,9 @@ export function fetchPackageInfo(packageName, dircheck) {
 }
 
 export function getPackagePath(pkgInfo) {
-  var pkgFolder = dirs[pkgInfo.Realm];
-  var pkgPath = `${process.cwd()}/${pkgFolder}/_Index/${pkgInfo.Scope}_${
+  var option = program.opts();
+  var pkgDir = option.packageDir ?? `${process.cwd()}/${dirs[pkgInfo.Realm]}`
+  var pkgPath = `${pkgDir}/_Index/${pkgInfo.Scope}_${
     pkgInfo.Name
   }@${pkgInfo.Version}/${pkgInfo.Name}`;
   return pkgPath;
