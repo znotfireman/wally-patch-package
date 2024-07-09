@@ -4,7 +4,7 @@ import applyPatch from "./applyPatch.js";
 
 program
   .name("wally-patch-package")
-  .version("1.2.1")
+  .version("0.1.0")
   .description("CLI tool for patching Wally packages; forked by znotfireman to add more configuration")
   .arguments("[libraryname]")
   .action((libraryname, options) => {
