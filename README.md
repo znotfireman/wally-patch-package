@@ -8,7 +8,7 @@ Install the fork via aftman:
 wally-patch-package = "znotfireman/wally-patch-package@1.2.1"
 ```
 
-Changes made from the repo:
+Changes made:
 
 - Added options `packageDir` and `patchDir` for specifying custom folders
 - Thats it for now
